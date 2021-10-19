@@ -32,7 +32,7 @@ namespace GraphQL
             
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGraphQL();
+                endpoints.MapGraphQL("");
             });
         }
     }
