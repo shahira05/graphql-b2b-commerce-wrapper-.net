@@ -3,13 +3,14 @@
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
 EXPOSE 80
+EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["GraphQL/GraphQL.csproj", "GraphQL/"]
-RUN dotnet restore "GraphQL/GraphQL.csproj"
+COPY ["GraphQL.csproj", "./"]
+RUN dotnet restore "GraphQL.csproj"
 COPY . .
-WORKDIR "/src/GraphQL"
+WORKDIR "/src/"
 RUN dotnet build "GraphQL.csproj" -c Release -o /app/build
 
 FROM build AS publish
